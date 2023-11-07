@@ -1,0 +1,22 @@
+kind: ZarfPackageConfig
+metadata:
+  name: nats
+  description: Zarf package for deploying NATS
+  version: 0.0.1
+
+components:
+  - name: nats
+    required: true
+    description: Deploy the NATS helm chart
+    charts:
+      - name: nats
+        namespace: nats
+        # https://artifacthub.io/packages/helm/nats/nats
+        url: https://nats-io.github.io/k8s/helm/charts/
+        version: 1.1.4
+        valuesFiles:
+          - values.yaml
+    images:
+      - nats:2.10.4-alpine
+      - natsio/nats-box:0.14.1
+      - natsio/nats-server-config-reloader:0.13.0
