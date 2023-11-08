@@ -26,7 +26,7 @@ To consume the data, I need to retrieve the binary blob for each section of the 
     >
     > In this example, we have 2 ships with 3 sections each. Hull 1701 (the Enterprise) was designed and built using Revision A of all 3 sections. Hull 1702 (the Farragut) uses Revision A of Sections 1 and 2, but the shipyard made a change to Section 3 when designing Hull 1702, so 1702 uses Revision B of Section 3. We would therefore expect 4 entries in the Revision Database: `section_1_rev_a.blob`, `section_2_rev_a.blob`, `section_3_rev_a.blob`, and `section_3_rev_b.blob`
 - Have the ability to consume the data by programmatically saying "I want to download all of the `.blob` files that correspond with Hull X"
-- Receive a notification 
+- Receive a notification whenever a new Revision is published to the database.
 
 ## Instructions
 
