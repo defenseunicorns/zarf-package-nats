@@ -1,0 +1,17 @@
+hulls:
+  - id: '1701'
+    sections:
+      - id: '1'
+        revision: 'A'
+      - id: '2'
+        revision: 'A'
+      - id: '3'
+        revision: 'A'
+  - id: '1702'
+    sections:
+      - id: '1'
+        revision: 'A'
+      - id: '2'
+        revision: 'A'
+      - id: '3'
+        revision: 'B'
