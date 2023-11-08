@@ -33,11 +33,11 @@ To consume the data, I need to retrieve the binary blob for each section of the 
 ### Local
 
 1. Install `nats` and `nats-server`. Instructions [here](https://docs.nats.io/nats-concepts/what-is-nats/walkthrough_setup).
-2. Stand up a NATS server
+2. Stand up a NATS server with JetStream enabled.
     ```shell
    nats-server -js
     ```
-3. Add an Object Store Bucket
+3. Add an Object Store Bucket called `sections`
     ```shell
     nats object add sections
     ```
@@ -50,6 +50,8 @@ nats object put sections section_3_rev_a.blob
 nats object put sections section_3_rev_b.blob
 nats object put sections state_index.yaml
 ```
+
+5. TODO
 
 ### Kubernetes-based with Zarf
 
