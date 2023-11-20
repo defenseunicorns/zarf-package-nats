@@ -27,10 +27,12 @@ def get_revision(hull_number, section_number, state_index_yaml):
 
 
 async def main(hull_number):
-    # Connect to NATS and
+    # Connect to NATS
     nats_client = await nats.connect(servers)
     jetstream_context = nats_client.jetstream()
     object_store = await jetstream_context.object_store(bucket_name)
+
+    # Grab the State Index
     object_result = await object_store.get("state_index.yaml")
     state_index_yaml = yaml.safe_load(io.BytesIO(object_result.data))
 
@@ -40,15 +42,10 @@ async def main(hull_number):
         revision = get_revision(hull_number, section["id"], state_index_yaml)
 
         # Download the file to the CWD
-
-    # # Loop through each section
-    # for section in range(1, 4):
-    #     # Get the latest revision
-    #     revision = get_latest_revision(hull_number, section)
-    #     file_name = f"section_{section}_rev_{revision}.blob"
-    #
-    #     # Download the blob file
-    #     download_blob_from_nats(bucket_name, file_name)
+        filename = f'section_{section["id"]}_rev_{revision}.blob'.lower()
+        with open(filename, 'w') as f:
+            # noinspection PyTypeChecker
+            await object_store.get(filename, writeinto=f)
 
     print("All required .blob files have been downloaded.")
 

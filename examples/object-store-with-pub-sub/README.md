@@ -42,16 +42,22 @@ To consume the data, I need to retrieve the binary blob for each section of the 
     nats object add sections
     ```
 4. Load the Sections and the State Index into the bucket
+    ```shell
+    cd examples/object-store-with-pub-sub/data
+    nats object put sections section_1_rev_a.blob
+    nats object put sections section_2_rev_a.blob
+    nats object put sections section_3_rev_a.blob
+    nats object put sections section_3_rev_b.blob
+    nats object put sections state_index.yaml
+    ```
+
+5. Download the `.blob` files for a particular hull by running
 ```shell
-cd examples/object-store-with-pub-sub/data
-nats object put sections section_1_rev_a.blob
-nats object put sections section_2_rev_a.blob
-nats object put sections section_3_rev_a.blob
-nats object put sections section_3_rev_b.blob
-nats object put sections state_index.yaml
+cd examples/object-store/with-pub-sub/scripts
+./getblobs.py <hull_number>
 ```
 
-5. TODO
+6. 
 
 ### Kubernetes-based with Zarf
 
